@@ -24,7 +24,7 @@ task:
       - ./w.sh
 
   Sync_script:
-      - apt install git-lfs
+      - sudo apt install git-lfs
       - mkdir -p ~/derp
       - cd ~/derp
       - git lfs install
