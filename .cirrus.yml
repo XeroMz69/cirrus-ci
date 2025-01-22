@@ -25,9 +25,11 @@ task:
 
   Sync_script:
       - curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+      - sudo apt install git-lfs
       - mkdir -p ~/derp
       - cd ~/derp
       - git lfs install
+      - git-lfs install
       - repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 15 --git-lfs
       - git clone https://github.com/XeroMz69/manifest-lokal.git -b derpfest .repo/local_manifests
       - repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
