@@ -24,7 +24,7 @@ task:
       - ./w.sh
 
   Sync_script:
-      - sudo apt install git-lfs
+      - curl -O https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh
       - mkdir -p ~/derp
       - cd ~/derp
       - git lfs install
