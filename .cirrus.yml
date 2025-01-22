@@ -24,7 +24,7 @@ task:
       - ./w.sh
 
   Sync_script:
-      - curl -O https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+      - curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
       - mkdir -p ~/derp
       - cd ~/derp
       - git lfs install
