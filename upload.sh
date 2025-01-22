@@ -1,9 +1,38 @@
-if [ -f ~/rom/out/target/product/ysl/qassa*.zip ]; then
-      curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build $(cd ~/rom/out/target/product/ysl/ && ls qassa*.zip)"
-      rclone copy ~/rom/out/target/product/ysl/qassa*.zip venyx:citrus -P
-      curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/ysl/ && ls qassa*.zip) Uploaded Successfully!"
-fi
+#!/bin/bash
 
-if [ -f ~/rom/out/target/product/citrus/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb ]; then
-      rclone copy ~/rom/out/target/product/citrus/obj/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb venyx:citrus -P
-fi
+UploadTag="DerpFest-"$(date +"%Y%m%d")""
+ZipName="~/derp/out/target/product/earth/DerpFest*.zip"
+BootImg="~/derp/out/target/product/earth/boot.img"
+Sha256sum="~/derp/out/target/product/earth/DerpFest*.zip.sha256sum"
+
+    chmod +x github-release
+    ./github-release release \
+            --security-token "$GIT_SECRET_MAIN" \
+            --user XeroMz69 \
+            --repo XeroRelease \
+            --tag "$UploadTag" \
+            --description "$(date +"%Y%m%d")"
+    
+    ./github-release upload \
+             --security-token "$GIT_SECRET_MAIN" \
+             --user XeroMz69 \
+             --repo XeroRelease \
+             --tag "$UploadTag" \
+             --name "$UploadTag" \
+             --file "$ZipName" || fail="y"
+
+    ./github-release upload \
+             --security-token "$GIT_SECRET_MAIN" \
+             --user XeroMz69 \
+             --repo XeroRelease \
+             --tag "$UploadTag" \
+             --name "$UploadTag" \
+             --file "$BootImg" || fail="y"
+
+    ./github-release upload \
+             --security-token "$GIT_SECRET_MAIN" \
+             --user XeroMz69 \
+             --repo XeroRelease \
+             --tag "$UploadTag" \
+             --name "$UploadTag" \
+             --file "$Sha256sum" || fail="y"
