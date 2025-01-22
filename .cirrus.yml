@@ -1,8 +1,4 @@
 env:
-    credentials: "ENCRYPTED[!1c392fcccf471650aadf41d6b27a49759479dfb70e2d92579d1e60a8d87afc61e4c68aca586048c5395bad34e0ba58ca!]"
-    rcloneconfig: "ENCRYPTED[!ccbc6baa684ae8eee44e476475251fc63f750d889d1cfa14549649f5f8782c97d2b3e206eab87f0e65cded3653c34b84!]"
-    tokentl: "ENCRYPTED[!a40fb6e8a0c4a009e54e32d2d78ed3690e92c5212b1ee916b81b0b78b2fc79d5910536d7967571077a018aabdc2c9132!]"
-    idtl: "ENCRYPTED[!4bd619351eb055c968a00373a6b9d5486f49737d8d194db4aca803c7e0fd6a5da4749ea619e35a3cc6717d838cd92a18!]"
     lunch: lunch derp_earth-userdebug
     make: mka derp
 
