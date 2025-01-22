@@ -3,8 +3,8 @@ env:
     rcloneconfig: "ENCRYPTED[!ccbc6baa684ae8eee44e476475251fc63f750d889d1cfa14549649f5f8782c97d2b3e206eab87f0e65cded3653c34b84!]"
     tokentl: "ENCRYPTED[!a40fb6e8a0c4a009e54e32d2d78ed3690e92c5212b1ee916b81b0b78b2fc79d5910536d7967571077a018aabdc2c9132!]"
     idtl: "ENCRYPTED[!4bd619351eb055c968a00373a6b9d5486f49737d8d194db4aca803c7e0fd6a5da4749ea619e35a3cc6717d838cd92a18!]"
-    lunch: lunch qassa_ysl-userdebug
-    make: make qassa
+    lunch: lunch derp_earth-userdebug
+    make: mka derp
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -16,17 +16,10 @@ task:
 
   Build-Env-Setup_background_script:
        - export DEBIAN_FRONTEND=noninteractive
-       - mkdir -p ~/.config/rclone
-       - echo "$rcloneconfig" > ~/.rclone.conf
-       - git config --global user.name "Rahmad Adi Pratama"
-       - git config --global user.email "OhMyVenyx@proton.me"
+       - git config --global user.name "XeroMz69"
+       - git config --global user.email "adamyd18@gmail.com"
        - echo "$credentials" > ~/.git-credentials
-       - git config --global credential.helper store --file=~/.git-credentials
        - mkdir -p ~/ccache
-       - rclone copy venyx:qassa/ccache.tar.gz ~/ -P
-       - cd ~/
-       - time tar xf ccache.tar.gz
-       - cd ~/
 
   Storage-Checker_background_script:
       - df -h
@@ -35,34 +28,31 @@ task:
       - ./w.sh
 
   Sync_script:
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync Source"
-      - mkdir -p ~/rom
-      - cd ~/rom
-      - repo init -q --no-repo-verify --depth=1 -u https://github.com/keepQASSA/manifest.git -b Q -g default,-mips,-darwin,-notdefault
-      - git clone --depth 1 https://github.com/IDN-Labs/local_manifest.git -b qassa .repo/local_manifests
-      - sed -i 's|ssh://git@github.com|https://github.com|g' .repo/manifests/snippets/qassa.xml
-      - repo sync -c -j8 --force-sync --no-clone-bundle --no-tags
-      - sed -i 's| -u||g' vendor/qassa/config/branding.mk
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
-
+      - apt install git-lfs
+      - mkdir -p ~/derp
+      - cd ~/derp
+      - git lfs install
+      - repo init -u https://github.com/DerpFest-AOSP/manifest.git -b 15 --git-lfs
+      - git clone https://github.com/XeroMz69/manifest-lokal.git -b derpfest .repo/local_manifests
+      - repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
+      - rm -rf vendor/xiaomi
+      - git clone https://github.com/mt6768-dev/proprietary_vendor_xiaomi_earth.git $WORKDIR/vendor/xiaomi/earth --depth 1
+      - git clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b $WORKDIR/prebuilts/prebuilts/clang/host/linux-x86/clang-los --depth 1
+      
   Build_script:
-      - export BUILD_USERNAME="rahmad"
-      - export BUILD_HOSTNAME="IDN-Labs"
-      - export KBUILD_BUILD_USER="OhMyVenyx"
-      - export KBUILD_BUILD_HOST="IDN-Labs"
+      - export BUILD_USERNAME="xero"
+      - export BUILD_HOSTNAME="urmom"
+      - export KBUILD_BUILD_USER="xero"
+      - export KBUILD_BUILD_HOST="urmom" 
+      - export BUILD_BROKEN_MISSING_REQUIRED_MODULES=true
+      - export TZ=Asia/Jakarta
 #      - export WITH_GAPPS=true
       - sudo ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build Started!"
+#      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build Started!"
 #      - ./collect.sh
       - ./final.sh
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/ysl/ && ls qassa*.zip) Completed!"
+ #     - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/ysl/ && ls qassa*.zip) Completed!"
 
   Upload_script:
       - ./upload.sh
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
-      - ./ziping.sh
-      - cd ~/
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading ccache...."
-      - rclone copy ccache.tar.gz venyx:qassa -P
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Ccache Uploaded Successfully!"
-
+      
