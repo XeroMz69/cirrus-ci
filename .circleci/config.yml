@@ -19,7 +19,7 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: "Build-Afterlife"
+          name: "Say Hello"
           command: "curl https://raw.githubusercontent.com/XeroMz69/shell-script-rom/refs/heads/main/circle-after.sh | bash"
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
@@ -27,4 +27,4 @@ workflows:
   say-hello-workflow: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - Build-Afterlife
+      - say-hello
