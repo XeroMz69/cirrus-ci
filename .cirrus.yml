@@ -10,7 +10,7 @@ task:
   timeout_in: 480m
   container:
       image: cimg/deploy:2025.01
-      cpu: 32
+      cpu: 24
       memory: 96G
 
   Build-Env-Setup_background_script:
