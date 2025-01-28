@@ -21,6 +21,9 @@ jobs:
       - run:
           name: "Say Hello"
           command: "curl https://raw.githubusercontent.com/XeroMz69/shell-script-rom/refs/heads/main/circle-after.sh | bash"
+      # Upload build
+      - store_artifacts:
+          path: /tmp/artifacts
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
