@@ -19,6 +19,7 @@ task:
        - git config --global user.email "adamyd18@gmail.com"
        - echo "$credentials" > ~/.git-credentials
        - mkdir -p ~/ccache
+       - sudo apt install aria2 -y
 
   Storage-Checker_background_script:
       - df -h
