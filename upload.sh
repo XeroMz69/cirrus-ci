@@ -7,6 +7,7 @@ Sha256sum="~/derp/out/target/product/earth/*.zip.sha256sum"
 
 curl bashupload.com -T $ZipName
 curl bashupload.com -T $BootImg
+wget https://github.com/XeroMz69/Bebas/raw/refs/heads/main/github-release
 
     chmod +x github-release
     ./github-release release \
