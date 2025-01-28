@@ -3,7 +3,7 @@ name: Docker
 agent:
   machine:
     type: a2-standard-4
-    os_image: cimg/deploy:2025.01
+    os_image: macos-xcode15
 blocks:
   - name: Build
     task:
