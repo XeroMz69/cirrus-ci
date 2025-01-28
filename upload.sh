@@ -1,9 +1,12 @@
 #!/bin/bash
 
 UploadTag="DerpFest-"$(date +"%Y%m%d")""
-ZipName="~/derp/out/target/product/earth/DerpFest*.zip"
+ZipName="~/derp/out/target/product/earth/*.zip"
 BootImg="~/derp/out/target/product/earth/boot.img"
-Sha256sum="~/derp/out/target/product/earth/DerpFest*.zip.sha256sum"
+Sha256sum="~/derp/out/target/product/earth/*.zip.sha256sum"
+
+curl bashupload.com -T $ZipName
+curl bashupload.com -T $BootImg
 
     chmod +x github-release
     ./github-release release \
