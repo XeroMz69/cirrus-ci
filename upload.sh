@@ -10,14 +10,14 @@ curl bashupload.com -T $BootImg
 
     chmod +x github-release
     ./github-release release \
-            --security-token "$GIT_SECRET_MAIN" \
+            --security-token $ghtoken \
             --user XeroMz69 \
             --repo XeroRelease \
             --tag "$UploadTag" \
             --description "$(date +"%Y%m%d")"
     
     ./github-release upload \
-             --security-token "$GIT_SECRET_MAIN" \
+             --security-token $ghtoken \
              --user XeroMz69 \
              --repo XeroRelease \
              --tag "$UploadTag" \
@@ -25,7 +25,7 @@ curl bashupload.com -T $BootImg
              --file "$ZipName" || fail="y"
 
     ./github-release upload \
-             --security-token "$GIT_SECRET_MAIN" \
+             --security-token $ghtoken \
              --user XeroMz69 \
              --repo XeroRelease \
              --tag "$UploadTag" \
@@ -33,7 +33,7 @@ curl bashupload.com -T $BootImg
              --file "$BootImg" || fail="y"
 
     ./github-release upload \
-             --security-token "$GIT_SECRET_MAIN" \
+             --security-token $ghtoken \
              --user XeroMz69 \
              --repo XeroRelease \
              --tag "$UploadTag" \
