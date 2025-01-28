@@ -1,0 +1,33 @@
+version: v1.0
+name: Docker
+agent:
+  machine:
+    type: f1-standard-2
+    os_image: ubuntu2204
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: docker build
+          commands:
+            - checkout
+            - export DEBIAN_FRONTEND=noninteractive
+
+
+
+       - git config --global user.email "adamyd18@gmail.com"
+
+       - echo "$credentials" > ~/.git-credentials
+
+
+  - name: 'Block #2'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - checkout
+  - name: 'Block #3'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands: []
