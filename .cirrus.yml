@@ -1,4 +1,5 @@
 env:
+    ghtoken: "ENCRYPTED[!312c4965ff6b7f37ae5e0178b0ef8a76eefe143491126d843f54a6b63d8dfde60da2105275bfb2ff420924785a302234!]"
     lunch: lunch derp_earth-userdebug
     make: goafterlife earth
 
