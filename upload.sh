@@ -1,6 +1,6 @@
 #!/bin/bash
 
-UploadTag="DerpFest-"$(date +"%Y%m%d")""
+UploadTag="AfterLife-"$(date +"%Y%m%d")""
 ZipName="~/derp/out/target/product/earth/*.zip"
 BootImg="~/derp/out/target/product/earth/boot.img"
 Sha256sum="~/derp/out/target/product/earth/*.zip.sha256sum"
