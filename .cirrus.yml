@@ -1,6 +1,6 @@
 env:
     ghtoken: "ENCRYPTED[!312c4965ff6b7f37ae5e0178b0ef8a76eefe143491126d843f54a6b63d8dfde60da2105275bfb2ff420924785a302234!]"
-    lunch: lunch derp_earth-userdebug
+    lunch: lunch afterlife_earth-userdebug
     CLANG_DLINK: "https://github.com/XeroMz69/Clang/releases/download/Xero-Clang-20.0.0git-20250113/Xero-Clang-20.0.0git-20250113.tar.gz"
     WORKDIR: "$(pwd)"
     make: goafterlife earth
@@ -19,7 +19,6 @@ task:
        - git config --global user.email "adamyd18@gmail.com"
        - echo "$credentials" > ~/.git-credentials
        - mkdir -p ~/ccache
-       - sudo apt install aria2 -y
 
   Storage-Checker_background_script:
       - df -h
@@ -43,11 +42,10 @@ task:
       - repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
       - rm -rf vendor/xiaomi
       - git clone https://github.com/mt6768-dev/proprietary_vendor_xiaomi_earth.git vendor/xiaomi/earth --depth 1
-      - aria2c -s16 -x16 -k1M $CLANG_DLINK -o Clang.tar.gz
+      - wget $CLANG_DLINK
       - mkdir -p prebuilts/clang/host/linux-x86/clang-xero
-      - tar -C prebuilts/clang/host/linux-x86/clang-xero/ -zxvf Clang.tar.gz
+      - tar -C prebuilts/clang/host/linux-x86/clang-xero/ -zxvf Xero-Clang-20.0.0git-20250113.tar.gz
       - rm -rf Xero-Clang-20.0.0git-20250113.tar.gz
-      - 
       
   Build_script:
       - export BUILD_USERNAME="xero"
