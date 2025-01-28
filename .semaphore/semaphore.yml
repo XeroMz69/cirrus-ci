@@ -2,7 +2,7 @@ version: v1.0
 name: Docker
 agent:
   machine:
-    type: f1-standard-2
+    type: e1-standard-8
     os_image: ubuntu2204
 blocks:
   - name: Build
@@ -11,15 +11,8 @@ blocks:
         - name: docker build
           commands:
             - checkout
+            - df -h
             - export DEBIAN_FRONTEND=noninteractive
-
-
-
-       - git config --global user.email "adamyd18@gmail.com"
-
-       - echo "$credentials" > ~/.git-credentials
-
-
   - name: 'Block #2'
     task:
       jobs:
