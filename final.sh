@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/rom
+cd ~/derp
 
 . build/envsetup.sh
 export TZ=Asia/Jakarta
