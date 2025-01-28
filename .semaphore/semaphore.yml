@@ -11,6 +11,9 @@ blocks:
         - name: docker build
           commands:
             - checkout
+            - lsblk
+            - free -h
+            - lscpu
             - df -h
             - export DEBIAN_FRONTEND=noninteractive
   - name: 'Block #2'
