@@ -11,7 +11,7 @@ task:
   container:
       image: cimg/deploy:2025.01
       cpu: 8
-      memory: 128G
+      memory: 32G
 
   Build-Env-Setup_background_script:
        - export DEBIAN_FRONTEND=noninteractive
