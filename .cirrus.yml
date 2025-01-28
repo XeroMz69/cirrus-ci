@@ -1,12 +1,12 @@
 env:
     lunch: lunch derp_earth-userdebug
-    make: mka derp
+    make: goafterlife earth
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
   timeout_in: 480m
   container:
-      image: inok2341/anu:latest
+      image: cimg/deploy:2025.01
       cpu: 8
       memory: 32G
 
@@ -29,7 +29,7 @@ task:
       - mkdir -p ~/derp
       - cd ~/derp
       - git lfs install
-      - repo init -q --no-repo-verify --depth=1 -u https://github.com/DerpFest-AOSP/manifest.git -b 15 -g default,-mips,-darwin,-notdefault
+      - repo init --depth=1 -u https://github.com/XeroMz69/android_manifest.git -b 14 --git-lfs
       - git-lfs install
       - git clone https://github.com/XeroMz69/manifest-lokal.git -b derpfest .repo/local_manifests
       - repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
