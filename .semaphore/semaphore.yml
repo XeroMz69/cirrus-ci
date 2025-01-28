@@ -3,7 +3,7 @@ name: Docker
 agent:
   machine:
     type: e1-standard-8
-    os_image: ubuntu:22.04
+    os_image: ubuntu:20.04
 blocks:
   - name: Build
     task:
