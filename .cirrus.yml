@@ -42,8 +42,9 @@ task:
       - repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
       - rm -rf vendor/xiaomi
       - git clone https://github.com/mt6768-dev/proprietary_vendor_xiaomi_earth.git vendor/xiaomi/earth --depth 1
-      - wget $CLANG_DLINK
-      - tar -C $WORKDIR/prebuilts/clang/host/linux-x86/clang-los/ -zxvf Xero-Clang-20.0.0git-20250113.tar.gz
+      - aria2c -s16 -x16 -k1M $CLANG_DLINK -o Clang.tar.gz
+      - mkdir -p prebuilts/clang/host/linux-x86/clang-xero
+      - tar -C prebuilts/clang/host/linux-x86/clang-xero/ -zxvf Clang.tar.gz
       - rm -rf Xero-Clang-20.0.0git-20250113.tar.gz
       - 
       
