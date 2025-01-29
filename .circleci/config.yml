@@ -8,10 +8,9 @@ jobs:
   say-hello:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/executor-intro/ & https://circleci.com/docs/configuration-reference/#executor-job
-    docker:
-      # Specify the version you desire here
-      # See: https://circleci.com/developer/images/image/cimg/base
-      - image: cimg/deploy:2025.01
+    machine:
+      image: ubuntu-2004:2024.01.2 # recommended linux image
+    resource_class: large
  #   resource_class: xlarge # specify a resource class
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
@@ -20,8 +19,8 @@ jobs:
       - checkout
       - run:
           name: "Say Hello"
-          command: "curl https://raw.githubusercontent.com/XeroMz69/shell-script-rom/refs/heads/main/circle-after.sh | bash"
-          no_output_timeout: 1.5h
+          command: "df -h"
+          no_output_timeout: 168h
       # Upload build
       - store_artifacts:
           path: /tmp/artifacts
