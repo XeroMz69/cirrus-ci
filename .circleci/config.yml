@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run:
           name: "Say Hello"
-          command: "df -h"
+          command: "jebbdkd"
           no_output_timeout: 168h
       # Upload build
       - store_artifacts:
