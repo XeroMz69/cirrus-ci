@@ -14,7 +14,7 @@ blocks:
             - lsblk
             - free -h
             - lscpu
-            - null
+            - df -h
             - export DEBIAN_FRONTEND=noninteractive
             - sudo apt update && sudo apt upgrade -y
             - sudo apt install openssh-server openssh-client -y
